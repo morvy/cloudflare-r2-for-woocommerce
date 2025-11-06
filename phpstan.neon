@@ -1,0 +1,31 @@
+includes:
+    - vendor/szepeviktor/phpstan-wordpress/extension.neon
+
+parameters:
+    level: 6
+    paths:
+        - includes/
+
+    bootstrapFiles:
+        - phpstan-bootstrap.php
+        - vendor/php-stubs/wordpress-stubs/wordpress-stubs.php
+        - vendor/php-stubs/woocommerce-stubs/woocommerce-stubs.php
+
+    excludePaths:
+        - includes/vendor/
+
+    # Don't error on unused ignoreErrors patterns
+    reportUnmatchedIgnoredErrors: false
+
+    # Ignore common WordPress/WooCommerce patterns
+    ignoreErrors:
+        # Allow dynamic property access on WP_Post, etc.
+        - '#Access to an undefined property WP_Post::\$[a-zA-Z_]+#'
+        # Allow mixed array access from WordPress functions
+        - '#Offset [a-zA-Z_]+ (does not exist|might not exist) on array#'
+        # Ignore missing iterableValue types (WordPress arrays)
+        -
+            identifier: missingType.iterableValue
+        # Ignore missing generics types
+        -
+            identifier: missingType.generics

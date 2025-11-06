@@ -1,0 +1,173 @@
+/**
+ * Cloudflare R2 Admin Settings Styles
+ */
+
+.cfr2wc-settings-wrap {
+    max-width: 800px;
+}
+
+.cfr2wc-settings-wrap .form-table th {
+    padding-left: 0;
+}
+
+.cfr2wc-settings-section {
+    background: #fff;
+    border: 1px solid #c3c4c7;
+    border-radius: 4px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.cfr2wc-settings-section h2 {
+    margin-top: 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #dcdcde;
+}
+
+.cfr2wc-settings-section p.description {
+    margin-top: 0;
+    color: #646970;
+}
+
+/* Test Connection Button */
+.cfr2wc-test-connection {
+    margin-top: 15px;
+}
+
+.cfr2wc-test-connection .button {
+    margin-right: 10px;
+}
+
+.cfr2wc-connection-status {
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 3px;
+    font-weight: 500;
+    margin-left: 10px;
+}
+
+.cfr2wc-connection-status.success {
+    background: #00a32a;
+    color: #fff;
+}
+
+.cfr2wc-connection-status.error {
+    background: #d63638;
+    color: #fff;
+}
+
+.cfr2wc-connection-status.testing {
+    background: #f0f0f1;
+    color: #50575e;
+}
+
+.cfr2wc-connection-status .dashicons {
+    line-height: inherit;
+    vertical-align: middle;
+    margin-right: 4px;
+    display: inline;
+}
+
+/* Field Descriptions */
+.cfr2wc-field-description {
+    display: block;
+    margin-top: 5px;
+    font-style: italic;
+    color: #646970;
+}
+
+/* Required Field Indicator */
+.cfr2wc-required {
+    color: #d63638;
+    font-weight: bold;
+    margin-left: 2px;
+}
+
+/* Settings Form */
+.cfr2wc-settings-form .form-table input[type="text"],
+.cfr2wc-settings-form .form-table input[type="password"] {
+    width: 100%;
+    max-width: 400px;
+}
+
+.cfr2wc-settings-form .submit {
+    padding-left: 0;
+}
+
+/* Help Text */
+.cfr2wc-help-box {
+    background: #f0f6fc;
+    border-left: 4px solid #2271b1;
+    padding: 12px;
+    margin: 15px 0;
+}
+
+.cfr2wc-help-box h4 {
+    margin-top: 0;
+    color: #135e96;
+}
+
+.cfr2wc-help-box p {
+    margin-bottom: 0;
+}
+
+.cfr2wc-help-box ul {
+    margin-top: 10px;
+    margin-bottom: 0;
+    padding-left: 20px;
+}
+
+/* Credentials Display */
+.cfr2wc-credential-field {
+    position: relative;
+}
+
+.cfr2wc-credential-field .dashicons-visibility {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #787c82;
+}
+
+.cfr2wc-credential-field .dashicons-visibility:hover {
+    color: #2271b1;
+}
+
+/* Notice Styles */
+.cfr2wc-notice {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    border-left: 4px solid;
+    background: #fff;
+    margin: 15px 0;
+}
+
+.cfr2wc-notice.info {
+    border-color: #2271b1;
+}
+
+.cfr2wc-notice.warning {
+    border-color: #dba617;
+}
+
+.cfr2wc-notice .dashicons {
+    flex-shrink: 0;
+}
+
+/* Responsive */
+@media (max-width: 782px) {
+    .cfr2wc-settings-form .form-table input[type="text"],
+    .cfr2wc-settings-form .form-table input[type="password"] {
+        max-width: 100%;
+    }
+
+    .cfr2wc-connection-status {
+        display: block;
+        margin-left: 0;
+        margin-top: 10px;
+    }
+}

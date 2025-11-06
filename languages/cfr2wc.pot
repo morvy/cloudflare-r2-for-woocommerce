@@ -1,0 +1,436 @@
+# Copyright (C) 2025 Peter Morvay
+# This file is distributed under the AGPL-3.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Cloudflare R2 for WooCommerce 0.1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: Peter Morvay <moped@jepan.sk>\n"
+"Language-Team: Peter Morvay <moped@jepan.sk>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-11-06T12:45:43+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"X-Domain: cfr2wc\n"
+
+#. Plugin Name of the plugin
+#: cloudflare-r2-for-woocommerce.php
+msgid "Cloudflare R2 for WooCommerce"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: cloudflare-r2-for-woocommerce.php
+msgid "https://github.com/morvy/cloudflare-r2-for-woocommerce"
+msgstr ""
+
+#. Description of the plugin
+#: cloudflare-r2-for-woocommerce.php
+msgid "Simple WooCommerce integration to offload downloadable product files to Cloudflare R2"
+msgstr ""
+
+#. Author of the plugin
+#: cloudflare-r2-for-woocommerce.php
+msgid "Peter Morvay"
+msgstr ""
+
+#. Author URI of the plugin
+#: cloudflare-r2-for-woocommerce.php
+msgid "https://moped.jepan.sk"
+msgstr ""
+
+#: cloudflare-r2-for-woocommerce.php:79
+msgid "Cloudflare R2 for WooCommerce requires WooCommerce to be installed and active."
+msgstr ""
+
+#: includes/admin/class-admin-settings.php:40
+msgid "Cloudflare R2"
+msgstr ""
+
+#: includes/admin/class-admin-settings.php:49
+msgid "General"
+msgstr ""
+
+#: includes/admin/class-admin-settings.php:50
+msgid "Connection"
+msgstr ""
+
+#: includes/admin/class-admin-settings.php:96
+msgid "General Settings"
+msgstr ""
+
+#: includes/admin/class-admin-settings.php:98
+msgid "Configure general download and security settings."
+msgstr ""
+
+#: includes/admin/class-admin-settings.php:102
+msgid "Enable Public Downloads"
+msgstr ""
+
+#: includes/admin/class-admin-settings.php:104
+msgid "Allow public access to files without WooCommerce authentication (uses custom domain)."
+msgstr ""
+
+#: includes/admin/class-admin-settings.php:109
+msgid "Check Download Permissions"
+msgstr ""
+
+#: includes/admin/class-admin-settings.php:111
+msgid "Verify customer has purchased the product before allowing download."
+msgstr ""
+
+#: includes/admin/class-admin-settings.php:116
+msgid "Use Generic Download Name"
+msgstr ""
+
+#: includes/admin/class-admin-settings.php:118
+msgid "Display \"Download\" for all files instead of the actual filename."
+msgstr ""
+
+#: includes/admin/class-admin-settings.php:123
+msgid "Download URL Expiration"
+msgstr ""
+
+#: includes/admin/class-admin-settings.php:125
+msgid "Hours until download link expires (1-720 hours, default 24)."
+msgstr ""
+
+#: includes/admin/class-admin-settings.php:136
+msgid "Custom Domain"
+msgstr ""
+
+#: includes/admin/class-admin-settings.php:138
+msgid "Your R2 custom domain (e.g., cdn.yourdomain.com). Only used when public downloads are enabled."
+msgstr ""
+
+#: includes/admin/class-admin-settings.php:145
+msgid "Enable Debug Mode"
+msgstr ""
+
+#: includes/admin/class-admin-settings.php:147
+msgid "Enable debug logging using WooCommerce logger. Logs will be available in WooCommerce > Status > Logs."
+msgstr ""
+
+#: includes/admin/class-admin-settings.php:152
+msgid "Debug Level"
+msgstr ""
+
+#: includes/admin/class-admin-settings.php:154
+msgid "Select the minimum log level to record. Only applies when Debug Mode is enabled."
+msgstr ""
+
+#: includes/admin/class-admin-settings.php:158
+msgid "Debug (All messages)"
+msgstr ""
+
+#: includes/admin/class-admin-settings.php:159
+msgid "Info (Informational messages)"
+msgstr ""
+
+#: includes/admin/class-admin-settings.php:160
+msgid "Warning (Warning messages)"
+msgstr ""
+
+#: includes/admin/class-admin-settings.php:161
+msgid "Error (Error messages only)"
+msgstr ""
+
+#: includes/admin/class-admin-settings.php:162
+msgid "Critical (Critical errors only)"
+msgstr ""
+
+#: includes/admin/class-admin-settings.php:180
+msgid "Enter your R2 credentials in the fields below. They will be encrypted using AES-256-GCM and stored securely in your WordPress database."
+msgstr ""
+
+#. translators: %1$s - wp-config.php, %2$s - constant name, %3$s - constant name
+#: includes/admin/class-admin-settings.php:185
+#, php-format
+msgid "<strong>Advanced:</strong> Edit your %1$s file and define the constants %2$s and %3$s containing your R2 credentials. These will be used instead of database values."
+msgstr ""
+
+#: includes/admin/class-admin-settings.php:194
+msgid "R2 Connection Credentials"
+msgstr ""
+
+#: includes/admin/class-admin-settings.php:196
+msgid "Configure your Cloudflare R2 API credentials."
+msgstr ""
+
+#: includes/admin/class-admin-settings.php:200
+msgid "Credentials Storage"
+msgstr ""
+
+#: includes/admin/class-admin-settings.php:206
+msgid "Save to database (encrypted with AES-256-GCM)"
+msgstr ""
+
+#: includes/admin/class-admin-settings.php:207
+msgid "Use wp-config.php constants (unencrypted)"
+msgstr ""
+
+#: includes/admin/class-admin-settings.php:212
+msgid "R2 Endpoint"
+msgstr ""
+
+#: includes/admin/class-admin-settings.php:214
+msgid "Example: https://account-id.r2.cloudflarestorage.com (Global) or https://account-id.eu.r2.cloudflarestorage.com (EU)"
+msgstr ""
+
+#: includes/admin/class-admin-settings.php:221
+msgid "Access Key ID"
+msgstr ""
+
+#: includes/admin/class-admin-settings.php:223
+msgid "Your R2 API token access key"
+msgstr ""
+
+#: includes/admin/class-admin-settings.php:230
+msgid "Secret Access Key"
+msgstr ""
+
+#: includes/admin/class-admin-settings.php:232
+msgid "Your R2 API token secret key"
+msgstr ""
+
+#: includes/admin/class-admin-settings.php:239
+msgid "Bucket Name"
+msgstr ""
+
+#: includes/admin/class-admin-settings.php:241
+msgid "The name of your R2 bucket"
+msgstr ""
+
+#: includes/admin/class-admin-settings.php:264
+#: includes/admin/class-admin-settings.php:268
+msgid "Test Connection"
+msgstr ""
+
+#: includes/admin/class-admin-settings.php:266
+msgid "Test your R2 connection with the credentials entered above."
+msgstr ""
+
+#: includes/admin/class-admin-settings.php:379
+#: includes/admin/class-product-r2-integration.php:359
+#: includes/admin/class-product-r2-integration.php:374
+#: includes/admin/class-product-r2-integration.php:392
+#: includes/admin/class-product-r2-integration.php:451
+msgid "Permission denied"
+msgstr ""
+
+#: includes/admin/class-admin-settings.php:390
+msgid "Please fill in all required fields"
+msgstr ""
+
+#: includes/admin/class-admin-settings.php:408
+msgid "Connection successful! Your credentials are valid."
+msgstr ""
+
+#: includes/admin/class-admin-settings.php:410
+msgid "Connection failed. Please check your credentials."
+msgstr ""
+
+#: includes/admin/class-admin-settings.php:413
+#, php-format
+msgid "Connection error: %s"
+msgstr ""
+
+#: includes/admin/class-product-r2-integration.php:75
+msgid "Select File from R2"
+msgstr ""
+
+#: includes/admin/class-product-r2-integration.php:83
+msgid "Navigate:"
+msgstr ""
+
+#: includes/admin/class-product-r2-integration.php:88
+#: includes/admin/class-product-r2-integration.php:155
+msgid "Root"
+msgstr ""
+
+#: includes/admin/class-product-r2-integration.php:91
+#: includes/admin/class-product-r2-integration.php:158
+msgid "folder..."
+msgstr ""
+
+#: includes/admin/class-product-r2-integration.php:101
+msgid "Select File:"
+msgstr ""
+
+#: includes/admin/class-product-r2-integration.php:103
+msgid "Type to search files in current folder..."
+msgstr ""
+
+#: includes/admin/class-product-r2-integration.php:107
+msgid "Selected File"
+msgstr ""
+
+#: includes/admin/class-product-r2-integration.php:110
+msgid "File Name:"
+msgstr ""
+
+#: includes/admin/class-product-r2-integration.php:114
+msgid "Size:"
+msgstr ""
+
+#: includes/admin/class-product-r2-integration.php:118
+msgid "Path:"
+msgstr ""
+
+#: includes/admin/class-product-r2-integration.php:127
+msgid "Cancel"
+msgstr ""
+
+#: includes/admin/class-product-r2-integration.php:130
+msgid "Add to Product"
+msgstr ""
+
+#: includes/admin/class-product-r2-integration.php:141
+msgid "Upload File to R2"
+msgstr ""
+
+#: includes/admin/class-product-r2-integration.php:150
+msgid "Upload to:"
+msgstr ""
+
+#: includes/admin/class-product-r2-integration.php:168
+msgid "Click to select file or drag and drop"
+msgstr ""
+
+#: includes/admin/class-product-r2-integration.php:234
+msgid "Loading..."
+msgstr ""
+
+#: includes/admin/class-product-r2-integration.php:235
+msgid "Error"
+msgstr ""
+
+#: includes/admin/class-product-r2-integration.php:236
+msgid "No files found"
+msgstr ""
+
+#: includes/admin/class-product-r2-integration.php:237
+msgid "Please select a file"
+msgstr ""
+
+#: includes/admin/class-product-r2-integration.php:238
+msgid "Uploading..."
+msgstr ""
+
+#: includes/admin/class-product-r2-integration.php:239
+#: includes/admin/class-product-r2-integration.php:438
+msgid "File uploaded successfully"
+msgstr ""
+
+#: includes/admin/class-product-r2-integration.php:240
+msgid "Upload failed"
+msgstr ""
+
+#: includes/admin/class-product-r2-integration.php:241
+msgid "Choose"
+msgstr ""
+
+#: includes/admin/class-product-r2-integration.php:242
+msgid "Upload"
+msgstr ""
+
+#: includes/admin/class-product-r2-integration.php:311
+msgid "File type not allowed. Please upload a valid file."
+msgstr ""
+
+#: includes/admin/class-product-r2-integration.php:323
+#, php-format
+msgid "File too large. Maximum size: %s"
+msgstr ""
+
+#: includes/admin/class-product-r2-integration.php:340
+msgid "File exceeds upload_max_filesize in php.ini"
+msgstr ""
+
+#: includes/admin/class-product-r2-integration.php:341
+msgid "File exceeds MAX_FILE_SIZE in HTML form"
+msgstr ""
+
+#: includes/admin/class-product-r2-integration.php:342
+msgid "File was only partially uploaded"
+msgstr ""
+
+#: includes/admin/class-product-r2-integration.php:343
+msgid "No file was uploaded"
+msgstr ""
+
+#: includes/admin/class-product-r2-integration.php:344
+msgid "Missing temporary upload folder"
+msgstr ""
+
+#: includes/admin/class-product-r2-integration.php:345
+msgid "Failed to write file to disk"
+msgstr ""
+
+#: includes/admin/class-product-r2-integration.php:346
+msgid "Upload stopped by PHP extension"
+msgstr ""
+
+#: includes/admin/class-product-r2-integration.php:349
+msgid "Unknown upload error"
+msgstr ""
+
+#: includes/admin/class-product-r2-integration.php:397
+msgid "Too many uploads. Please wait before uploading more files."
+msgstr ""
+
+#: includes/admin/class-product-r2-integration.php:401
+msgid "No file uploaded"
+msgstr ""
+
+#: includes/admin/class-product-r2-integration.php:424
+msgid "Failed to upload to R2"
+msgstr ""
+
+#: includes/class-download-handler.php:80
+msgid "You do not have permission to download this file."
+msgstr ""
+
+#: includes/class-download-handler.php:80
+#: includes/class-download-handler.php:93
+msgid "Download Error"
+msgstr ""
+
+#: includes/class-download-handler.php:93
+msgid "Failed to generate download URL. Please contact support."
+msgstr ""
+
+#: includes/class-file-cache-manager.php:56
+msgid "Cache is still fresh, no sync needed"
+msgstr ""
+
+#: includes/class-file-cache-manager.php:66
+msgid "Failed to list R2 objects"
+msgstr ""
+
+#: includes/class-file-cache-manager.php:136
+#, php-format
+msgid "Synced %d new files, updated %d existing, deleted %d obsolete"
+msgstr ""
+
+#: includes/class-r2-client.php:240
+msgid "Connection successful!"
+msgstr ""
+
+#: includes/class-r2-client.php:243
+#, php-format
+msgid "Connection failed: %s"
+msgstr ""
+
+#: includes/class-shortcode.php:82
+msgid "Missing required \"object\" attribute"
+msgstr ""
+
+#: includes/class-shortcode.php:94
+msgid "Download"
+msgstr ""
+
+#: includes/class-shortcode.php:145
+msgid "Failed to generate download URL"
+msgstr ""

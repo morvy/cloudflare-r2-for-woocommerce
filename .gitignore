@@ -1,0 +1,47 @@
+# Composer
+/vendor/
+composer.lock
+
+# Built assets (generated from /assets/src/)
+/assets/css/
+/assets/js/
+
+# IDE
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+Thumbs.db
+
+# WordPress
+wp-config.php
+.htaccess
+
+# Logs
+*.log
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# PHPUnit
+/.phpunit.cache
+/.phpunit.result.cache
+/tests/coverage/
+
+# Build artifacts
+/build/
+*.zip
+CHANGELOG.txt
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*~
+
+# Claude Code
+/.claude/
+/CLAUDE.md

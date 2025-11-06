@@ -1,0 +1,143 @@
+name: Build and Release Plugin
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build and Create Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          tools: composer:v2, wp-cli
+          extensions: zip
+
+      - name: Get tag version
+        id: get_version
+        run: |
+          VERSION=${GITHUB_REF#refs/tags/v}
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "tag=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+
+      - name: Update plugin version
+        run: |
+          VERSION=${{ steps.get_version.outputs.version }}
+
+          # Update main plugin file
+          sed -i "s/Version: .*/Version: $VERSION/" cloudflare-r2-for-woocommerce.php
+          sed -i "s/define('CFR2WC_VERSION', '.*')/define('CFR2WC_VERSION', '$VERSION')/" cloudflare-r2-for-woocommerce.php
+
+          # Update composer.json version
+          sed -i "s/\"version\": \".*\"/\"version\": \"$VERSION\"/" composer.json
+
+      - name: Install Composer dependencies (with dev for build tools)
+        run: composer install --ignore-platform-req=ext-curl
+
+      - name: Build assets (CSS/JS minification)
+        run: composer run build
+
+      - name: Reinstall Composer dependencies (production only)
+        run: |
+          rm -rf vendor
+          composer install --no-dev --optimize-autoloader --prefer-dist --ignore-platform-req=ext-curl
+
+      - name: Install WP-CLI i18n command
+        run: wp package install wp-cli/i18n-command --allow-root
+
+      - name: Generate translation POT file
+        run: |
+          mkdir -p languages
+          wp i18n make-pot . languages/cfr2wc.pot \
+            --exclude=vendor,node_modules,tests,build,.github \
+            --domain=cfr2wc \
+            --allow-root
+
+      - name: Generate changelog
+        id: changelog
+        run: |
+          PREVIOUS_TAG=$(git describe --tags --abbrev=0 HEAD^ 2>/dev/null || echo "")
+
+          if [ -z "$PREVIOUS_TAG" ]; then
+            # First release - get all commits
+            CHANGELOG=$(git log --pretty=format:"- %s (%an)" --no-merges)
+          else
+            # Get commits since previous tag
+            CHANGELOG=$(git log ${PREVIOUS_TAG}..HEAD --pretty=format:"- %s (%an)" --no-merges)
+          fi
+
+          # Save to file
+          echo "$CHANGELOG" > CHANGELOG.txt
+
+          # Set output for GitHub release (escape newlines)
+          {
+            echo 'changelog<<EOF'
+            echo "$CHANGELOG"
+            echo EOF
+          } >> $GITHUB_OUTPUT
+
+      - name: Create build directory
+        run: |
+          mkdir -p build
+          rsync -av --progress . build/cloudflare-r2-for-woocommerce \
+            --exclude .git \
+            --exclude .github \
+            --exclude .claude \
+            --exclude tests \
+            --exclude .gitignore \
+            --exclude .phpunit.cache \
+            --exclude phpunit.xml \
+            --exclude phpstan.neon \
+            --exclude phpstan-bootstrap.php \
+            --exclude rector.php \
+            --exclude composer.json \
+            --exclude composer.lock \
+            --exclude 'assets/src' \
+            --exclude build-assets.php \
+            --exclude CONTRIBUTING.md \
+            --exclude build
+
+      - name: Create plugin ZIP
+        run: |
+          cd build
+          zip -r cloudflare-r2-for-woocommerce-${{ steps.get_version.outputs.version }}.zip cloudflare-r2-for-woocommerce/
+          mv cloudflare-r2-for-woocommerce-${{ steps.get_version.outputs.version }}.zip ../
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          name: Release ${{ steps.get_version.outputs.tag }}
+          body: |
+            ## What's Changed
+
+            ${{ steps.changelog.outputs.changelog }}
+
+            ## Installation
+
+            1. Download the `cloudflare-r2-for-woocommerce-${{ steps.get_version.outputs.version }}.zip` file
+            2. Go to WordPress Admin > Plugins > Add New > Upload Plugin
+            3. Upload the ZIP file and activate
+
+            ## Requirements
+
+            - PHP 8.2 or higher
+            - WordPress 6.0 or higher
+            - WooCommerce 8.0 or higher
+          files: |
+            cloudflare-r2-for-woocommerce-${{ steps.get_version.outputs.version }}.zip
+            CHANGELOG.txt
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
