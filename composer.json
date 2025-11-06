@@ -35,7 +35,14 @@
         "phpstan": "phpstan analyse --memory-limit=1G",
         "rector": "rector process includes/ --dry-run",
         "rector-fix": "rector process includes/",
-        "make-pot": "vendor/bin/wp i18n make-pot . languages/cfr2wc.pot --exclude=vendor,node_modules,tests,build,.github --domain=cfr2wc --headers='{\"Report-Msgid-Bugs-To\":null,\"Plural-Forms\": \"nplurals=INTEGER; plural=EXPRESSION;\",\"Last-Translator\": \"Peter Morvay <moped@jepan.sk>\\n\",\"Language-Team\": \"Peter Morvay <moped@jepan.sk>\\n\"}'",
+        "make-pot": "vendor/bin/wp i18n make-pot . languages/cfr2wc.pot --exclude=vendor,node_modules,tests,build,.github --domain=cfr2wc --headers='{\"Report-Msgid-Bugs-To\":\"https://github.com/morvy/cloudflare-r2-for-woocommerce/issues\",\"Plural-Forms\": \"nplurals=INTEGER; plural=EXPRESSION;\",\"Last-Translator\": \"Peter Morvay <moped@jepan.sk>\\n\",\"Language-Team\": \"Peter Morvay <moped@jepan.sk>\\n\"}'",
+        "compile-mo": "vendor/bin/wp i18n make-mo languages/",
+        "make-php": "vendor/bin/wp i18n make-php languages/",
+        "update-translations": [
+            "@make-pot",
+            "@compile-mo",
+            "@make-php"
+        ],
         "build": "php build-assets.php"
     },
     "config": {
